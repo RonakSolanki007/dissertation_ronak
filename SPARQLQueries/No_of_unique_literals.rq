@@ -1,0 +1,9 @@
+SELECT (COUNT(DISTINCT ?o) AS ?objects) 
+WHERE { 
+  { ?s ?p ?o } 
+  UNION 
+  { GRAPH ?g 
+    { ?s ?p ?o }
+  }
+  FILTER(isLiteral(?o))
+}

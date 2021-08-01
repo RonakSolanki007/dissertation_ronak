@@ -1,0 +1,8 @@
+SELECT (COUNT(DISTINCT ?s) AS ?subjects) 
+WHERE { 
+  { ?s ?p ?o } 
+  UNION 
+  { GRAPH ?g 
+    { ?s ?p ?o }
+  }
+}

@@ -1,0 +1,8 @@
+SELECT (COUNT(DISTINCT ?s) AS ?entities) 
+WHERE { 
+  { ?s a [] } 
+  UNION 
+  { GRAPH ?g 
+    { ?s a [] }
+  }
+}

@@ -1,0 +1,8 @@
+SELECT (COUNT(DISTINCT ?o) AS ?classes) 
+WHERE { 
+  { ?s a ?o } 
+  UNION 
+  { GRAPH ?g 
+    { ?s a ?o }
+  }
+}

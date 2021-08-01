@@ -1,0 +1,14 @@
+PREFIX schema: <https://schema.org/>
+PREFIX pav: <http://purl.org/pav/>
+SELECT ?p (COUNT(?p) AS ?triples) 
+WHERE {
+    { ?s ?p ?o }
+    UNION
+    {
+        GRAPH ?g {
+            ?s ?p ?o
+        }
+    }
+} 
+GROUP BY ?p
+ORDER BY ?p

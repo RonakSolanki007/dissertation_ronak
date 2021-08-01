@@ -1,0 +1,10 @@
+PREFIX schema: <https://schema.org/>
+PREFIX pav: <http://purl.org/pav/>
+SELECT ?Class (COUNT(DISTINCT ?s) AS ?distinctInstances) 
+WHERE {
+    GRAPH ?g {
+        ?s a ?Class
+    }
+} 
+GROUP BY ?Class
+ORDER BY ?Class

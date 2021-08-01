@@ -1,0 +1,17 @@
+PREFIX pav: <http://purl.org/pav/>
+PREFIX schema: <https://schema.org/>
+SELECT DISTINCT ?protein ?proteinName ?source1 ?annotation1 ?annotation2 ?source2
+WHERE {
+    GRAPH ?g1 {
+        ?protein a schema:Protein ;
+            schema:hasSequenceAnnotation ?annotation1 .
+        OPTIONAL {?protein schema:name ?proteinName .}
+    }
+    ?g1 pav:retrievedFrom ?source1 .
+    GRAPH ?g2 {
+        ?protein a schema:Protein ;
+            schema:hasSequenceAnnotation ?annotation2
+    }
+    ?g2 pav:retrievedFrom ?source2 .
+    FILTER(?g1 != ?g2)
+}
